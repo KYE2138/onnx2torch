@@ -24,7 +24,7 @@ class OnnxTranspose(nn.Module, OnnxToTorchModule):
         if self.perm is None:
             self.perm = list(range(input_tensor.dim()))[::-1]
 
-        return input_tensor.permute(self.perm)
+        return torch.permute(input_tensor, self.perm)
 
 
 @add_converter(operation_type='Transpose', version=1)
